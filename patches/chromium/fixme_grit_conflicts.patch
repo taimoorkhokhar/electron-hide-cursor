@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Jeremy Apthorp <jeremya@chromium.org>
+Date: Wed, 8 Jan 2020 16:06:14 -0800
+Subject: FIXME: grit conflicts
+
+This works around a bug in grit's handling of generated .grd files.
+
+Should be removed once grit is fixed.
+
+Tracking bug: https://crbug.com/1040605
+
+diff --git a/tools/gritsettings/resource_ids.spec b/tools/gritsettings/resource_ids.spec
+index a598f84ff97bf3e687b4e32ad24532bd41fb937f..25f95ab7f7cbfa71adab97c35bf236526a45b6f0 100644
+--- a/tools/gritsettings/resource_ids.spec
++++ b/tools/gritsettings/resource_ids.spec
+@@ -588,15 +588,16 @@
+     "includes": [3840],
+   },
+ 
++  # FIXME: put this back after devtools_resources once grit is fixed to respect META properly
++  "electron/electron_resources.grd": {
++    "messages": [3860],
++    "includes": [4100],
++  },
++
+   # This file is generated during the build.
+   "<(SHARED_INTERMEDIATE_DIR)/devtools/devtools_resources.grd": {
+     "META": {"sizes": {"includes": [500],}},
+-    "includes": [3860],
+-  },
+-
+-  "electron/electron_resources.grd": {
+-    "messages": [31750],
+-    "includes": [31950],
++    "includes": [4860],
+   },
+ 
+   # END "everything else" section.
